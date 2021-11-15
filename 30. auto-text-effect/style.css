@@ -1,0 +1,38 @@
+* {
+    box-sizing: border-box;
+}
+
+html {
+    font-size: 15px;
+}
+
+body {
+    margin: 0;
+    height: 100vh;
+    background-color: darksalmon;
+    display: grid;
+    place-items: center;
+}
+
+h1 {
+    font-size: 4rem;
+    margin-top: 0;
+}
+
+.speed-container {
+    position: absolute;
+    bottom: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(0, 0, 0, 0.3);
+    padding: 0.5rem 1rem;
+}
+
+#speed {
+    border: none;
+    outline: none;
+    padding: 0.5rem;
+    background-color: transparent;
+    width: 5rem;
+}

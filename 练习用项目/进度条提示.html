@@ -1,0 +1,101 @@
+<!-- 带进度条的提示消息，同时有淡入淡出的动画
+设置定时器控制progress的长度即可。
+至于淡入动画是给 alert-box 加个 active class，同理淡出是给 deactive class。这两个class不能包含让元素瞬间消失的属性（如display: none)。正因如此元素并不会真的在 html 中消失。但因为元素有 fixed position 脱离文档流，所以不用 hover 等伪类时是不影响布局的。
+-->
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      * {
+        box-sizing: border-box;
+      }
+
+      body {
+        margin: 0;
+        font-family: Arial, Helvetica, sans-serif;
+        height: 100vh;
+      }
+
+      .alert-box {
+        position: fixed;
+        z-index: 1001;
+        top: 20px;
+        left: 50%;
+        transform: translateX(-50%);
+        background-color: black;
+        border-radius: 3px;
+        min-width: 200px;
+        opacity: 0;
+        transition: opacity 0.5s ease-in-out;
+      }
+
+      .alert-box.active {
+        visibility: visible;
+        opacity: 1;
+      }
+
+      alert-box.deactive {
+        opacity: 0;
+      }
+
+      .message {
+        color: white;
+        padding: 10px 20px;
+      }
+
+      .progress {
+        width: 0%;
+        height: 2px;
+        position: absolute;
+        bottom: 0;
+        background-color: aqua;
+      }
+
+      .box {
+          height: 50vh;
+          background-color: brown;
+      }
+    </style>
+  </head>
+  <body>
+    <button id="btn">show alert</button>
+    <div class="alert-box">
+      <div class="message">Something went wrong...</div>
+      <div class="progress"></div>
+    </div>
+
+    <div class="box"></div>
+
+    <script>
+      function do_alert() {
+        const alert = document.querySelector(".alert-box");
+        const progress = document.querySelector(".progress");
+        let count = 0;
+
+        if (alert.classList.contains("active")) {
+          return;
+        }
+
+        alert.classList.add("active");
+        alert.classList.remove("deactive");
+
+        let ivl = setInterval(() => {
+          count += 1;
+          progress.style.width = count + "%";
+          if (count == 100) {
+            clearInterval(ivl);
+            alert.classList.remove("active");
+            alert.classList.add("deactive");
+          }
+        }, 30);
+      }
+
+      const btn = document.querySelector("#btn");
+      btn.addEventListener("click", do_alert);
+    </script>
+  </body>
+</html>

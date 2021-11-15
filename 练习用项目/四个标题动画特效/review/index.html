@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      * {
+        box-sizing: border-box;
+      }
+
+      html {
+        font-size: 15px;
+      }
+
+      body {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+      }
+
+      h1 {
+        font-size: 6rem;
+      }
+
+      h1.animate span {
+        /* animation-name: var(--animation);
+        animation-duration: 0.4s;
+        animation-delay: var(--delay);
+        animation-timing-function: ease-in-out; */
+        display: inline-block;
+
+        animation: var(--animation) 0.4s ease-in-out var(--delay);
+      }
+
+      @keyframes jump {
+        0%,
+        100% {
+          transform: translateY(0);
+        }
+        50% {
+          transform: translateY(-10px);
+        }
+      }
+
+      @keyframes flip {
+        0%,
+        100% {
+            transform: rotateY(0deg);
+        }
+
+        50% {
+            transform: rotateY(90deg);
+        }
+      }
+
+      @keyframes blink {
+          0%, 100% {
+              color: inherit;
+          }
+
+          50% {
+              color: aquamarine;
+          }
+      }
+
+      @keyframes pop {
+          0%, 100% {
+              transform: scale(1);
+          }
+
+          50% {
+              transform: scale(0.80);
+          }
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Hello world</h1>
+    <button data-animation="jump">jump</button>
+    <button data-animation="flip">flip</button>
+    <button data-animation="pop">pop</button>
+    <button data-animation="blink">blink</button>
+  </body>
+
+  <script>
+    const h1 = document.querySelector("h1");
+    h1.innerHTML = h1.textContent.replace(/\S/g, "<span>$&</span>");
+    document.querySelectorAll("button").forEach((button) => {
+      button.addEventListener("click", (e) => {
+        setAnimate(e.target.getAttribute("data-animation"), 0.1);
+      });
+    });
+
+    function setAnimate(name, delay) {
+      document.querySelectorAll("span").forEach((span, idx) => {
+        span.style.setProperty("--delay", `${idx * delay}s`);
+      });
+
+      h1.style.setProperty("--animation", name);
+
+      h1.classList.remove("animate");
+      void h1.offsetWidth;
+      h1.classList.add("animate");
+    }
+  </script>
+</html>

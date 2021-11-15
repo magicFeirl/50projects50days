@@ -1,0 +1,105 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    height: 100vh;
+    background-color: rgb(70, 130, 180);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.container {
+    max-width: 100%;
+    background-color: rgb(42, 78, 108);
+    padding: 20px 40px;
+    border-radius: 5px;
+}
+
+.input-form {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.form-control {
+    width: 300px;
+    margin-bottom: 40px;
+    position: relative;
+}
+
+.form-control label {
+    color: white;
+    font-size: 16px;
+    position: absolute;
+    top: 15px;
+    left: 0;
+    /* 让元素无法选中 */
+    pointer-events: none;
+}
+
+.input {
+    border: none;
+    border-bottom: 2px solid white;
+    background-color: transparent;
+    height: 40px;
+    outline: none;
+    width: 100%;
+    margin-bottom: 20px;
+    font-size: 18px;
+    color: white;
+}
+
+.form-control label span{
+    display: inline-block;
+    font-size: 18px;
+    min-width: 5px;
+    transition: all 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+}
+
+/* focus 焦点
+valid 有内容 */
+.form-control input:focus+label span,
+.form-control input:valid+label span{
+    color: lightblue;
+    transform: translateY(-35px);
+}
+
+.input:focus {
+    border-color: rgb(173, 216, 230);
+}
+
+.login {
+    width: 100%;
+    background-color: rgb(173, 216, 230);
+    color: black;
+    outline: none;
+    border: none;
+    padding: 15px 0;
+    text-align: center;
+    font-size: 16px;
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+.login:active {
+    transform: scale(0.98);
+}
+
+.tip {
+    color: white;
+    text-align: left;
+}
+
+.tip a {
+    color: rgb(70, 130, 180);
+    text-decoration: none;
+}
+
+h2 {
+    color: white;
+    font-size: 36px;
+    text-align: center;
+}

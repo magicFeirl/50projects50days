@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      * {
+        box-sizing: border-box;
+      }
+
+      html {
+        font-size: 14px;
+      }
+
+      body {
+        height: 100vh;
+        background-color: blueviolet;
+        display: grid;
+        place-items: center;
+        font-family: Arial, Helvetica, sans-serif;
+      }
+
+      .ripple {
+        font-size: 2rem;
+        padding: 1rem;
+        background-color: cadetblue;
+        text-transform: uppercase;
+        color: white;
+        outline: none;
+        border: none;
+        cursor: pointer;
+        box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
+        position: relative;
+        overflow: hidden;
+      }
+
+      .ripple:active {
+        transform: scale(0.98);
+      }
+
+      .ripple span {
+        transition: transform 0.3s linear;
+        background-color: white;
+        display: inline-block;
+        transform: translate(-50%, -50%) scale(0);
+        border-radius: 50%;
+        position: absolute;
+        top: 0;
+        width: 100px;
+        height: 100px;
+        left: 0;
+        animation: circle 0.3s ease-in;
+        opacity: 0.5;
+      }
+
+      @keyframes circle {
+        100% {
+          opacity: 0;
+          transform: translate(-50%, -50%) scale(3);
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <button class="ripple">click me</button>
+  </body>
+  <script>
+    const ripple = document.querySelector(".ripple");
+    ripple.addEventListener("click", function (e) {
+      const { offsetTop: oy, offsetLeft: ox } = this;
+      const { clientY: cy, clientX: cx } = e;
+      const x = cx - ox,
+        y = cy - oy;
+
+      console.log(x, y);
+
+      const span = document.createElement("span");
+      this.appendChild(span);
+      (span.style.top = y + "px"), (span.style.left = x + "px");
+      setTimeout(() => {
+        span.remove();
+      }, 400);
+    });
+  </script>
+</html>

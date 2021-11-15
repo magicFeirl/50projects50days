@@ -1,0 +1,123 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    height: 100vh;
+    display: grid;
+    place-items: center;
+    margin: 0;
+    font-family: Arial, Helvetica, sans-serif;
+    overflow: hidden;
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    transition: 0.3s ease-in-out;
+}
+
+body::after {
+    content: "";
+    position: fixed;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.7);
+    z-index: -1;
+}
+
+.slider {
+    width: 70vw;
+    height: 60vh;
+    position: relative;
+    background-color: black;
+    box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.3);
+}
+
+.controls {
+    position: absolute;
+    top: 50%;
+    width: 100%;
+    transform: translateY(-50%);
+    height: 72px;
+    z-index: 1001;
+}
+
+.controls .left,
+.controls .right {
+    position: absolute;
+    padding: 1rem;
+    background-color: transparent;
+    color: white;
+    border: greenyellow 3px solid;
+    width: 50px;
+    height: 50px;
+    display: grid;
+    place-items: center;
+    font-size: 18px;
+    font-weight: bolder;
+    cursor: pointer;
+    transition: transform 0.4s ease-in-out;
+}
+
+.controls .left span,
+.controls .right span {
+    margin-top: -3px;
+    pointer-events: none;
+}
+
+.controls .left {
+    left: -25px;
+}
+
+.controls .right {
+    right: -25px;
+}
+
+.controls .left:hover,
+.controls .right:hover {
+    transform: scale(1.12);
+}
+
+.controls .left:active,
+.controls .right:active {
+    transform: scale(0.84);
+}
+
+.slider-items {
+    height: 100%;
+    overflow: hidden;
+}
+
+.slider-item {
+    height: 100%;
+    display: grid;
+    place-items: center;
+    color: white;
+    font-size: 3rem;
+    position: absolute;
+    width: 100%;
+    top: 0;
+    overflow: hidden;
+    opacity: 0;
+    transition: opacity 0.3s linear;
+}
+
+.slider-item h2 {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%) translateX(-50%);
+    left: 50%;
+    z-index: 1002;
+    margin: 0;
+    text-align: center;
+    margin-top: -15px;
+}
+
+.slider-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.slider-item.active {
+    opacity: 1;
+}

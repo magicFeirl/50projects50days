@@ -1,0 +1,121 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    min-height: 100vh;
+    font-family: Arial, Helvetica, sans-serif;
+    background-color: white;
+}
+
+header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1001;
+}
+
+nav {
+    display: flex;
+    align-items: center;
+    padding: 0 40px;
+    background-color: rgb(34, 34, 34);
+    height: 72px;
+    transition: all 0.3s linear;
+
+}
+
+nav.active {
+    height: 58px;
+    background-color: white;
+    box-shadow: 0 3px 5px rgba(0, 0, 0, 0.3);
+}
+
+nav.active a {
+    color: black;
+}
+
+.logo {
+    font-size: 1.5rem;
+}
+
+.nav-links {
+    margin-left: auto;
+    list-style: none;
+    display: flex;
+}
+
+.nav-links li:not(last-child) {
+    margin-left: 20px;
+}
+
+a {
+    color: white;
+    text-decoration: none;
+    transition: color 0.3s linear;
+    cursor: pointer;
+}
+
+nav a:hover,
+nav a:active {
+    color: #c0392b;
+}
+
+.welcome-page {
+    height: 100vh;
+    position: relative;
+    background-image: url(https://images.pexels.com/photos/450035/pexels-photo-450035.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    padding: 0 40px;
+    z-index: 0;
+}
+
+.welcome-page h1,
+.welcome-page p {
+    color: white;
+    z-index: 1;
+    text-align: center;
+}
+
+.welcome-page h1 {
+    font-size: 4rem;
+}
+
+.welcome-page p {
+    font-size: 1.5rem;
+    margin-top: 0;
+}
+
+.welcome-page::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    background-color: rgba(0, 0, 0, 0.3);
+    z-index: -1;
+}
+
+.content {
+    padding: 0 60px;
+}
+
+.content h2 {
+    font-size: 2rem;
+}
+
+.content p {
+    font-size: 1.2rem;
+    margin-top: 0;
+    color: #666;
+    letter-spacing: 0.1rem;
+}

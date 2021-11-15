@@ -1,0 +1,84 @@
+<!doctye html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>右提示工具</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+      }
+
+      body {
+        text-align: center;
+        padding-top: 50px;
+      }
+
+      .tooltip {
+        display: inline-block;
+        position: relative;
+      }
+
+      .btn {
+        display: block;
+        padding: 20px;
+        background: #f0f;
+        color: white;
+      }
+
+      .bottom {
+        position: relative;
+        background: #aaa;
+        width: 160px;
+        position: absolute;
+        left: 110%;
+        top: 10%;
+        text-align: left;
+        padding: 12px;
+        opacity: 0;
+        transition: 1s;
+        color: white;
+        border-radius: 10px;
+        border: 5px solid;
+        border-color: aquamarine;
+      }
+
+      .tooltip:hover .bottom {
+        opacity: 1;
+      }
+
+      .bottom:after {
+        content: "";
+        border: inherit;
+        border-color: transparent #aaa transparent transparent;
+        position: absolute;
+        left: -10px;
+        margin-top: 5px;
+      }
+
+      .box {
+          background-color: black;
+          border: 3px dotted aqua;
+          width: 100px;
+          height: 100px;
+          background-clip: padding-box;
+          outline: 5px dashed blue;
+          outline-offset: -10px;
+      }
+
+      .box1 {
+        background-position: bottom 10px right 10px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="tooltip">
+      <span class="btn">右提示工具</span>
+      <div class="bottom">提示工具</div>
+    </div>
+
+
+    <div class="box"></div>
+  </body>
+</html>

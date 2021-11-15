@@ -1,0 +1,37 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    font-family: Arial, Helvetica, sans-serif;
+    display: grid;
+    place-items: center;
+    background-color: steelblue;
+    grid-template-columns: repeat(5, 1fr);
+    height: 100vh;
+}
+
+.empty {
+    width: 150px;
+    height: 150px;
+    border: 3px solid black;
+    background-color: white;
+    margin: 10px;
+    background-clip: padding-box;
+}
+
+.empty.hovered {
+    background-color: rgba(0, 0, 0, 0.7);
+    border-style: dashed;
+}
+
+.fill {
+    width: 145px;
+    height: 145px;
+    background: url('https://source.unsplash.com/random/150x150');
+}
+
+.fill.dragging {
+    opacity: 0.7;
+}

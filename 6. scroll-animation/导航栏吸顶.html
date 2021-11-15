@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+
+    <style>
+      * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+        font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
+      }
+
+      nav {
+        height: 48px;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+        padding: 5px 20px;
+        display: flex;
+        align-items: center;
+      }
+
+      header.active {
+        position: fixed;
+        top: 0;
+        background-color: white;
+        left: 0;
+        width: 100%;
+        animation: dropDown 0.4s ease-in-out forwards;
+      }
+
+      .container {
+        width: 80vw;
+        margin: 0 auto;
+      }
+
+      @keyframes dropDown {
+        from {
+          transform: translateY(-100px);
+        }
+
+        to {
+          transform: translateY(0);
+        }
+      }
+
+      p {
+        margin: 100px auto;
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <nav>This is a navbar</nav>
+    </header>
+    <div class="container">
+      <section>
+        <p>content</p>
+      </section>
+      <section>
+        <p>content</p>
+      </section>
+      <section>
+        <p>content</p>
+      </section>
+      <section>
+        <p>content</p>
+      </section>
+      <section>
+        <p>content</p>
+      </section>
+      <section>
+        <p>content</p>
+      </section>
+      <section>
+        <p>content</p>
+      </section>
+      <section>
+        <p>content</p>
+      </section>
+      <section>
+        <p>content</p>
+      </section>
+      <section>
+        <p>content</p>
+      </section>
+      <section>
+        <p>content</p>
+      </section>
+      <section>
+        <p>content</p>
+      </section>
+      <section>
+        <p>content</p>
+      </section>
+      <section>
+        <p>content</p>
+      </section>
+      <section>
+        <p>content</p>
+      </section>
+      <section>
+        <p>content</p>
+      </section>
+      <section>
+        <p>content</p>
+      </section>
+      <section>
+        <p>content</p>
+      </section>
+      <section>
+        <p>content</p>
+      </section>
+    </div>
+
+    <script>
+      window.addEventListener("scroll", () => {
+        const header = document.querySelector("header");
+        let height = header.getBoundingClientRect().height;
+
+        if (window.pageYOffset - height > window.innerHeight - 20) {
+          if (!header.classList.contains("active")) {
+            header.classList.add("active");
+          }
+        } else {
+          if (header.classList.contains("active")) {
+            header.classList.remove("active");
+          }
+        }
+      });
+    </script>
+  </body>
+</html>

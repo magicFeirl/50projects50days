@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      * {
+        box-sizing: border-box;
+      }
+
+      html {
+        font-size: 15px;
+      }
+
+      body {
+        margin: 0;
+        height: 100vh;
+        display: grid;
+        place-items: center;
+        background-color: steelblue;
+      }
+
+      .login-container {
+        background-color: skyblue;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+        border-radius: 10px;
+        padding: 1rem 2rem;
+        margin-top: -20px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        width: 350px;
+        max-width: 100%;
+      }
+
+      .form-control {
+        width: 100%;
+        margin-bottom: 30px;
+        position: relative;
+      }
+
+      .form-control input {
+        outline: none;
+        border: none;
+        border-bottom: 2px solid cornflowerblue;
+        padding: 0.5rem;
+        width: 100%;
+        background-color: transparent;
+        font-size: 1.2rem;
+        transition: border-bottom-color 0.3s linear;
+      }
+
+      .form-control label {
+        position: absolute;
+        left: 0;
+        top: 0;
+        font-weight: bold;
+        color: cornflowerblue;
+        pointer-events: none;
+      }
+
+      .form-control label span {
+        display: inline-block;
+        transition: transform 0.3s ease-in-out;
+        pointer-events: none;
+      }
+
+      .form-control input:focus,
+      .form-control input:valid {
+        border-bottom-color: lightseagreen;
+      }
+
+      .form-control input:focus + label span,
+      .form-control input:valid + label span {
+        transform: translateY(-18px);
+        color: lightseagreen;
+        font-size: 0.8rem;
+      }
+
+      .login {
+        font-size: 1.2rem;
+        border: none;
+        outline: none;
+        background-color: steelblue;
+        padding: 0.5rem 1rem;
+        color: white;
+        text-transform: uppercase;
+        letter-spacing: 2px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-bottom: 20px;
+        cursor: pointer;
+        border-radius: 5px;
+      }
+
+      .tip {
+        color: #444;
+      }
+
+      .tip a {
+        color: steelblue;
+        cursor: pointer;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="login-container">
+      <h2>Please Login</h2>
+      <div class="form-control">
+        <input type="text" required/>
+        <label>Username</label>
+      </div>
+      <div class="form-control">
+        <input type="text" required/>
+        <label>Password</label>
+      </div>
+      <button class="login">Login</button>
+      <p class="tip">Have not account? <a href="#">Register now!</a></p>
+    </div>
+
+    <script>
+      document.querySelectorAll(".form-control label").forEach((label) => {
+        label.innerHTML = label.textContent.replace(/\S/g, "<span>$&</span>");
+        label.querySelectorAll("span").forEach((span, idx) => {
+          span.style.transitionDelay = `${idx * 45}ms`;
+        });
+      });
+    </script>
+  </body>
+</html>

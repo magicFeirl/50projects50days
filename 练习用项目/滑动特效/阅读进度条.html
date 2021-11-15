@@ -1,0 +1,81 @@
+<!-- 找不到如何获取最大滑动高度的方法，弃之
+一种比较好的解决方案
+https://developer.mozilla.org/zh-CN/docs/Web/API/Element/scrollHeight#%E9%97%AE%E9%A2%98%E4%B8%8E%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88-->
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      body {
+        /* 必须设置 min-height（height =100vh 出现的滚动会导致bug）*/
+        height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin: 0;
+      }
+
+      .progress {
+        position: fixed;
+        background-color: aquamarine;
+        width: 0;
+        height: 2px;
+        top: 0;
+        left: 0;
+        z-index: 1001;
+      }
+
+      .container {
+        width: 70%;
+        margin: 0 auto;
+        display: grid;
+        place-items: center;
+        grid-template-columns: 1fr;
+        row-gap: 30px;
+      }
+
+      .box {
+        width: 300px;
+        height: 300px;
+        background-color: cornflowerblue;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="progress"></div>
+    <div class="container">
+      <div class="box"></div>
+      <div class="box"></div>
+      <div class="box"></div>
+      <div class="box"></div>
+      <div class="box"></div>
+      <div class="box"></div>
+      <div class="box"></div>
+      <div class="box"></div>
+      <div class="box"></div>
+      <div class="box"></div>
+    </div>
+
+    <script>
+      // pageYOffset 滚动高度（貌似不含滚动条的高度
+      // document.documentElement -> 页面的 <html?元素></html?元素
+      // dom.clientHeigth 是可见窗口的高度，和 css height 无关
+      // dom.offsetHeight 如果 css height 为 100vh，行为和 clientHeight 一样，否则是页面的总高度。需要区别 height 和 min-height
+      // document.documentElement.getBoundingClientRect().top 距离顶部的高度
+      // html 页面的宽高会因 css 的样式而产生变化，min-height: 100vh 如果超出，则页面总高度是 html 全文的高度
+      // height: 100vh 如果超出，页面总高度为可见区域的高度
+      const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+      const progress = document.querySelector(".progress");
+
+      window.addEventListener("scroll", (event) => {
+        progress.style.width =
+          (document.documentElement.scrollTop / height) * 100 + "%";
+
+        // console.log(event);
+      });
+    </script>
+  </body>
+</html>

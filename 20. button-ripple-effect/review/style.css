@@ -1,0 +1,44 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    height: 100vh;
+    display: grid;
+    place-items: center;
+    margin: 0;
+    font-family: Arial, Helvetica, sans-serif;
+    background-color: black;
+}
+
+.ripple {
+    padding: 1rem;
+    outline: none;
+    border: none;
+    background-color: cadetblue;
+    font-size: 1.2rem;
+    color: white;
+    letter-spacing: 0.3rem;
+    text-transform: uppercase;
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+}
+
+.ripple .circle {
+    width: 100px;
+    height: 100px;
+    background-color: white;
+    display: inline-block;
+    transform: translate(-50%, -50%) scale(0);
+    position: absolute;
+    animation: scale 0.3s ease-in-out;
+    border-radius: 50%;
+}
+
+@keyframes scale {
+    to {
+        transform: translate(-50%, -50%) scale(3);
+        opacity: 0;
+    }
+}

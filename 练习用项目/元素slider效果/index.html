@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      * {
+        box-sizing: border-box;
+      }
+
+      body {
+        margin: 0;
+        height: 100vh;
+        background-color: violet;
+        display: grid;
+        place-items: center;
+      }
+
+      .slider-container {
+        margin-top: -35px;
+        height: 60vh;
+        width: 50vw;
+        overflow: hidden;
+        position: relative;
+      }
+
+      .slide {
+        height: 100%;
+        width: 100%;
+        display: flex;
+        flex-wrap: nowrap;
+        transition: transform 0.3s ease-in-out;
+      }
+
+      .slide > div {
+        height: 100%;
+        background-color: black;
+        color: white;
+        font-size: 6rem;
+        display: grid;
+        place-items: center;
+        flex-shrink: 0;
+        width: 100%;
+      }
+
+      .buttons {
+        width: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: space-around;
+        position: absolute;
+        bottom: 0;
+      }
+
+      .up-button,
+      .down-button {
+        width: 45%;
+        cursor: pointer;
+        padding: 0.5rem;
+        background-color: dimgray;
+        font-size: large;
+        color: white;
+        display: grid;
+        place-items: center;
+        outline: none;
+        border: none;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="slider-container">
+      <div class="slide">
+        <div>1</div>
+        <div>2</div>
+        <div>3</div>
+        <div>4</div>
+        <div>5</div>
+      </div>
+      <div class="buttons">
+        <button class="up-button">prev</button>
+        <button class="down-button">next</button>
+      </div>
+    </div>
+
+    <script>
+      const up = document.querySelector(".up-button");
+      const down = document.querySelector(".down-button");
+      const slideEle = document.querySelector(".slide");
+      const slideItemsLength =
+        document.querySelectorAll(".slide > div").length - 1;
+
+      let activeIdx = 0;
+
+      let slideInterval = 3000;
+      let slideIntervalId = undefined;
+
+      function slide(offset, isClearInterval = false) {
+        activeIdx += offset;
+
+        if (activeIdx < 0) {
+          activeIdx = slideItemsLength;
+        }
+
+        if (activeIdx > slideItemsLength) {
+          activeIdx = 0;
+        }
+
+        slideEle.style.transform = `translateX(${-activeIdx * 100}%)`;
+
+        if (isClearInterval) {
+          clearInterval(slideIntervalId);
+          slideIntervalId = setInterval(() => {
+            slide(1);
+          }, slideInterval);
+        }
+      }
+
+      up.addEventListener("click", () => {
+        slide(-1, true);
+      });
+
+      down.addEventListener("click", () => {
+        slide(1, true);
+      });
+
+      slideIntervalId = setInterval(() => {
+        slide(1);
+      }, slideInterval);
+    </script>
+  </body>
+</html>

@@ -1,0 +1,151 @@
+<!-- 侧边栏滑动特效思路：
+侧边栏隐藏在页面左边，聚焦滑入 -->
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      * {
+        box-sizing: border-box;
+        font-family: Arial, Helvetica, sans-serif;
+      }
+
+      body {
+        margin: 0;
+        height: 100vh;
+      }
+
+      .sidebar-container {
+        position: fixed;
+        width: 300px;
+        height: 100vh;
+        background-color: #000;
+        left: -300px;
+        top: 0;
+        transition: all 0.2s ease-in-out;
+      }
+
+      .sidebar-container.active {
+        left: 0;
+      }
+
+      .open {
+        --width: 30px;
+        position: absolute;
+        z-index: 1000;
+        top: 50%;
+        right: calc(0% - var(--width));
+        width: var(--width);
+        height: 100px;
+        background-color: white;
+        transform: translateY(-50%);
+        border-top-right-radius: 10px;
+        border-bottom-right-radius: 10px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+        cursor: pointer;
+        writing-mode: vertical-rl;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        color: grey;
+        transition: color 0.2s linear;
+      }
+
+      .open:hover {
+        color: black;
+      }
+
+      .sidebar header {
+        height: 50px;
+        background-color: red;
+      }
+
+      .sidebar header h2 {
+        margin: 0;
+        text-align: center;
+        line-height: 50px;
+      }
+
+
+      .content {
+          width: calc(100% - 700px);
+          margin: 0 auto;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div class="sidebar-container">
+        <div class="sidebar">
+          <header>
+            <h2>月刊站设置面板</h2>
+          </header>
+        </div>
+        <div class="open">Open</div>
+      </div>
+      <div class="content">
+        <h2>卧槽事前端大手子</h2>
+        <p>11111</p>
+        <p>11111</p>
+        <p>11111</p>
+        <p>11111</p>
+        <p>11111</p>
+        <p>11111</p>
+        <p>11111</p>
+        <p>11111</p>
+        <p>11111</p>
+        <p>11111</p>
+        <p>11111</p>
+        <p>11111</p>
+        <p>11111</p>
+        <p>11111</p>
+        <p>11111</p>
+        <p>11111</p>
+        <p>11111</p>
+        <p>11111</p>
+        <p>11111</p>
+        <p>11111</p>
+        <p>11111</p>
+        <p>11111</p>
+        <p>11111</p>
+        <p>11111</p>
+        <p>11111</p>
+        <p>11111</p>
+        <p>11111</p>
+        <p>11111</p>
+        <p>11111</p>
+        <p>11111</p>
+        <p>11111</p>
+        <p>11111</p>
+        <p>11111</p>
+        <p>11111</p>
+        <p>11111</p>
+        <p>11111</p>
+        <p>11111</p>
+        <p>11111</p>
+        <p>11111</p>
+        <p>11111</p>
+        <p>11111</p>
+        <p>11111</p>
+        <p>11111</p>
+        <p>11111</p>
+        <p>11111</p>
+        <p>11111</p>
+      </div>
+    </div>
+
+    <script>
+      const openBtn = document.querySelector(".open");
+      const sidebar = document.querySelector(".sidebar-container");
+      let isClosed = true;
+      openBtn.addEventListener("click", () => {
+        sidebar.classList.toggle("active");
+        isClosed = !isClosed;
+        openBtn.innerHTML = isClosed ? "Open" : "Close";
+      });
+    </script>
+  </body>
+</html>

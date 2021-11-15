@@ -1,0 +1,83 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    height: 100vh;
+    margin: 0;
+    display: grid;
+    place-items: center;
+    background-color: rgb(52, 148, 228);
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.cup {
+    border: 4px solid rgb(20, 79, 198);
+    border-bottom-left-radius: 20px;
+    position: relative;
+    border-bottom-right-radius: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: white;
+    cursor: pointer;
+    overflow: hidden;
+}
+
+.cup .text {
+    text-align: center;
+    color: rgb(20, 79, 198);
+    z-index: 1001;
+}
+
+.title {
+    text-align: center;
+    color: white;
+}
+
+.cup.big {
+    height: 300px;
+    width: 150px;
+}
+
+.cups {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: repeat(2, 1fr);
+    gap: 20px;
+}
+
+.cup.small {
+    height: 100px;
+    width: 50px;
+}
+
+.cup.small.active {
+    color: white;
+}
+
+.cup.big .progress {
+    transform: translateY(0);
+    transition: height 0.4s linear;
+    height: 0;
+}
+
+.progress {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 110%;
+    height: 100%;
+    background-color: rgb(106, 179, 248);
+    transition: transform 0.3s linear;
+    transform: translateY(100%);
+}
+
+.cup.small.active .progress {
+    transform: translateY(0);
+}

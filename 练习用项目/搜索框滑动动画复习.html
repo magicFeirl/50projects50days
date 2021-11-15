@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css"
+      integrity="sha512-1PKOgIY59xJ8Co8+NE6FZ+LOAZKjy+KY8iq0G4B3CyeY6wYHN3yt9PW0XpSriVlkMXe40PTKnXrLnZ9+fkDaog=="
+      crossorigin="anonymous"
+    />
+    <title>Document</title>
+    <style>
+      * {
+        box-sizing: border-box;
+      }
+
+      :root {
+        --input-width: 400px;
+      }
+
+      body {
+        margin: 0;
+        height: 100vh;
+        display: grid;
+        place-items: center;
+        background-color: rgb(122, 93, 247);
+      }
+
+      .search {
+        position: relative;
+        height: 50px;
+      }
+
+      .btn {
+        position: absolute;
+        left: 0;
+        top: 0;
+        height: 100%;
+        width: 50px;
+        outline: none;
+        border: none;
+        cursor: pointer;
+        transition: transform 0.5s ease-in-out;
+        font-size: 24px;
+      }
+
+      .input {
+        width: 0;
+        transition: width 0.5s ease-in-out;
+        outline: none;
+        border: none;
+        background-color: white;
+        height: 100%;
+        font-size: 24px;
+        padding: 5px 10px;
+      }
+
+      .search.active .input {
+        width: var(--input-width);
+      }
+
+      .search.active .btn {
+        transform: translateX(calc(var(--input-width) - 2px));
+      }
+
+      .alert-box {
+        position: absolute;
+        top: 30px;
+        left: 50%;
+        min-width: 220px;
+        height: 35px;
+        padding: 5px 10px;
+        background-color: black;
+        color: white;
+        border-radius: 5px;
+        transform: translateX(-50%);
+        text-align: left;
+        opacity: 0;
+        transition: opacity 0.3s linear;
+      }
+
+      .alert-box.active {
+        opacity: 1;
+        transition: opacity 0.3s linear;
+      }
+
+      .alert-box.deactive {
+        opacity: 0;
+      }
+
+      .alert-box .progress {
+        height: 2px;
+        width: 0;
+        background-color: aquamarine;
+        position: absolute;
+        bottom: 0;
+        left: 0;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="alert-box">
+      <div class="message"></div>
+      <div class="progress"></div>
+    </div>
+
+    <div class="search">
+      <input type="text" placeholder="search..." class="input" />
+      <button class="btn">
+        <i class="fas fa-search"></i>
+      </button>
+    </div>
+
+    <script>
+      const input = document.querySelector(".input");
+      const btn = document.querySelector(".btn");
+      const search = document.querySelector(".search");
+
+      input.addEventListener("keyup", (e) => {
+        if (e.code === "Enter") {
+          show_alert("You searched: " + input.value, 3);
+        }
+      });
+
+      btn.addEventListener("click", () => {
+        search.classList.toggle("active");
+      });
+
+      const alert = document.querySelector(".alert-box");
+
+      function show_alert(message, time) {
+        let count = 0;
+        const message_ele = document.querySelector(".message");
+        const progress = document.querySelector(".progress");
+
+        if (alert.classList.contains("active")) {
+          return;
+        }
+
+        progress.style.width = "0";
+
+        message_ele.innerText = message;
+        alert.classList.remove("deactive");
+        alert.classList.add("active");
+
+        const ivl = setInterval(() => {
+          count++;
+
+          if (count >= 100) {
+            clearInterval(ivl);
+            alert.classList.remove("active");
+            alert.classList.add("deactive");
+          }
+
+          progress.style.width = count + "%";
+        }, time * 10);
+      }
+    </script>
+  </body>
+</html>

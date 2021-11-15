@@ -1,0 +1,181 @@
+<!-- 实现元素滑入视口时显示动画 功能类似 6. -->
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      * {
+        box-sizing: border-box;
+      }
+
+      body {
+        margin: 0;
+        min-height: 100vh;
+      }
+
+      .container {
+        width: 70%;
+        margin: 0 auto;
+      }
+
+      .title {
+        transition: color 0.5s ease-in-out;
+      }
+
+      .title.active {
+        color: red;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <h2 class="title">Section1</h2>
+      <p class="article">
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. A, aspernatur
+        vitae perferendis aliquam temporibus nulla in enim, eveniet voluptas
+        animi id! Expedita sapiente obcaecati at soluta iste voluptatem quaerat
+        in! Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatum
+        distinctio cupiditate sapiente libero atque voluptate corrupti modi
+        nesciunt beatae, ea esse minus? Architecto, iste. Ut repellendus
+        exercitationem quam modi dolor? Eos, cum! Laboriosam, est? Aut quia quod
+        exercitationem velit sint doloribus natus enim? Ut sint repellendus est
+        autem, omnis, facilis, soluta aperiam expedita rerum facere non
+        doloribus temporibus odit. Iure. Beatae quas provident aliquid non
+        itaque repellendus quisquam dolorem minima ipsa eligendi, voluptas ad
+        quos culpa atque debitis modi optio iure voluptatum ab necessitatibus
+        recusandae. Velit, cum earum? Rerum, tempora. Magnam molestiae dicta
+        dolor corrupti, officia ipsa beatae obcaecati modi reprehenderit
+        praesentium amet eos accusantium nisi odio atque autem corporis
+        consequatur unde, minima eius ex? Laboriosam nam blanditiis id eveniet!
+      </p>
+      <h2 class="title">Section2</h2>
+      <p class="article">
+        Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quasi ab
+        eveniet at dolore amet soluta reiciendis fugit accusamus beatae, error
+        libero quos aut a laborum consectetur porro minus ea ducimus? Nostrum
+        ad, soluta maiores amet cum ullam. Dolore necessitatibus cupiditate
+        aliquam reprehenderit earum repellat, expedita distinctio eius eligendi
+        hic qui quibusdam incidunt explicabo ducimus molestias nesciunt?
+        Cupiditate dolorem saepe perferendis? Blanditiis fuga asperiores
+        molestiae voluptas veniam corporis assumenda! Quam amet dignissimos
+        quidem esse debitis corporis. Voluptatem, ipsa? Dolore tempore
+        voluptatem eius architecto itaque facilis tenetur officiis, praesentium
+        dolores iusto sapiente. Architecto, tenetur porro! Aperiam ad hic error
+        adipisci recusandae iusto. Ad, eum rerum officia est voluptates ducimus,
+        debitis alias, consequatur dicta dolorum quisquam quis voluptatibus!
+        Autem commodi ullam sint at? Magnam totam obcaecati tempore explicabo
+        inventore minima laborum rerum a quod soluta aspernatur quis eaque
+        incidunt doloremque doloribus magni, eveniet perferendis eos porro dolor
+        cumque. Quasi similique ut deleniti laudantium. Neque laborum dolore
+        voluptates hic praesentium ut maiores ratione, consequatur id odio in
+        doloremque perferendis. Voluptate iure a sed expedita. Unde, est odit.
+        Natus sed nam voluptatum repellat rerum magnam! Aut laboriosam quisquam
+        iste. Velit veniam reprehenderit rem aperiam accusantium obcaecati
+        repellat accusamus maiores quidem ipsam quo, vitae reiciendis cum
+        inventore incidunt maxime, nemo fugit quibusdam dignissimos saepe
+        beatae? Et. Voluptas deleniti odio repudiandae architecto neque
+        reprehenderit eius nisi fuga, tempora porro? Ipsum consequuntur nisi
+        esse inventore id dolorem cumque, error quaerat possimus pariatur quo.
+        Corporis ducimus cumque iure rerum. Tenetur iusto quo architecto earum
+        illum, animi perferendis magnam alias minima blanditiis? Nobis eius
+        deleniti eligendi recusandae iusto qui. Hic, provident ducimus iusto
+        voluptatibus numquam omnis rerum temporibus eveniet ut? Nihil, voluptas.
+        Laborum maiores illo, harum quam corrupti nam aliquam atque ducimus
+        asperiores. Provident ipsa ratione tenetur fugit perferendis, officia
+        delectus corporis ut repellendus suscipit? Consequatur, beatae impedit.
+        Voluptas, tenetur.
+      </p>
+      <h2 class="title">Section3</h2>
+      <p class="article">
+        Lorem, ipsum dolor sit amet consectetur adipisicing elit. Iusto minus
+        quod illo ullam fugiat rem laborum enim, deserunt, reiciendis similique
+        illum? Labore vero corporis praesentium et, at itaque natus veritatis.
+        Molestiae commodi et dolore vero, in iusto, dolorem ducimus quidem
+        exercitationem veritatis aut at libero molestias est velit fuga
+        laudantium ipsam placeat a ut amet. Temporibus delectus iusto facilis!
+        Animi. Quisquam rem aliquam eveniet sed? Nemo iusto unde provident
+        doloremque alias, sit qui, velit, dolores pariatur incidunt cum libero
+        quam doloribus illum magnam! Recusandae ducimus tempora nobis, accusamus
+        explicabo quis? Necessitatibus quasi nesciunt dolores magnam
+        perspiciatis error illo placeat quae eum corrupti est officia temporibus
+        quidem beatae cumque, numquam neque quis. Perferendis asperiores fugit
+        libero animi vel tempore adipisci ipsam! Fuga commodi culpa reiciendis,
+        minus labore laborum rem possimus voluptatem. Eligendi at eum similique
+        repellendus minima quasi! Id blanditiis repellat vero. Voluptatem optio
+        fugit itaque autem, recusandae cupiditate officia in. Libero adipisci
+        nostrum repellat labore in autem, facilis aperiam, quasi ipsam officiis
+        explicabo esse culpa sequi quisquam iste asperiores alias iusto?
+        Officiis, similique dolor quod inventore illo id voluptas provident!
+        Sit, odit. Placeat aliquam, temporibus corrupti quae quisquam fuga
+        aperiam pariatur! Esse necessitatibus dolorem vel tempora aliquid
+        doloribus vero dicta obcaecati consectetur aut inventore, porro
+        laudantium voluptatibus ratione, quasi eligendi.
+      </p>
+      <h2 class="title">Section4</h2>
+      <p class="article">
+        Lorem ipsum dolor sit amet consectetur, adipisicing elit. Quod possimus
+        molestias quas, odit deserunt debitis vitae sed quaerat veniam inventore
+        dolore ab tenetur ut dicta consequuntur magni, eius, explicabo sequi.
+        Officia cumque error, soluta voluptate ratione repudiandae alias
+        aspernatur placeat deleniti nisi enim, quasi consectetur, quae
+        repellendus obcaecati quas excepturi similique. Eius deleniti
+        voluptatibus iure magni ullam, nobis facilis ratione. Illo maiores,
+        saepe nulla voluptates consequatur, aliquid sit accusamus vel provident
+        placeat nam sapiente. Adipisci, enim unde saepe pariatur distinctio,
+        maxime voluptate ut, dicta perferendis id quam dolore quod laboriosam?
+        Aliquid, exercitationem! Quam molestias porro molestiae exercitationem
+        aliquid in quisquam doloribus cumque numquam ab, modi officia voluptas
+        soluta quae ipsum omnis, enim eveniet beatae! Pariatur obcaecati
+        eligendi debitis accusamus quod. Eligendi iure, autem officiis fuga
+        corporis quo minima nulla omnis quasi modi, exercitationem accusantium
+        rem ducimus dolore perferendis, ad eos sequi id suscipit impedit
+        molestias quaerat? Facilis nesciunt sunt dolore? Rerum incidunt iure
+        maiores amet, quas distinctio odit! Obcaecati, quas, nesciunt est
+        corporis doloremque nulla animi eligendi maiores impedit nihil dolor
+        quasi aliquid sint ipsam. Nulla unde eius repellat dolor? Cumque vel
+        cupiditate voluptatibus totam temporibus odio eos, vitae, repellat cum,
+        ut quisquam sed aut non quis! Maxime in tempora, voluptatem nemo a illo,
+        est non expedita asperiores, impedit sed! Aliquid debitis ab magni
+        repellendus voluptas at. Sapiente commodi ex deleniti magnam dolore ut
+        dolorem ab ipsum ad. Eligendi molestiae eveniet rem eaque corporis.
+        Tempore illo nemo voluptatibus praesentium veniam!
+      </p>
+      <h2 class="title">Section5</h2>
+      <p class="article">
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Officia animi
+        amet consectetur incidunt eveniet commodi nihil, repellat tenetur
+        repellendus vero voluptatibus sit suscipit possimus, ea laborum sed.
+        Blanditiis, tempore tempora. Laudantium magni minus delectus, harum sit
+        totam laborum soluta ut, sed obcaecati omnis iste repellat a consequatur
+        recusandae magnam fuga minima? Enim vero nostrum beatae eaque officiis,
+        aliquam dolores exercitationem. Laudantium nihil, optio voluptatem
+        quisquam praesentium assumenda fugiat molestiae? Repudiandae, quia.
+        Animi nostrum corporis esse neque aperiam repellendus quisquam explicabo
+        natus aliquid optio? Praesentium saepe exercitationem id quia? Alias,
+        similique. Repellendus explicabo quod optio molestias sunt quia,
+        delectus asperiores repudiandae ea soluta provident consequatur facere
+        laborum ullam accusamus officiis. Quis ducimus corporis excepturi atque
+        iure quasi, cumque sapiente impedit temporibus!
+      </p>
+    </div>
+
+    <script>
+      const titles = document.querySelectorAll(".title");
+
+      function scrollInto() {
+        titles.forEach((ele) => {
+          const top = ele.getBoundingClientRect().top;
+          if (top > 0 && top < document.body.offsetHeight) {
+            ele.classList.add("active");
+          } else {
+            ele.classList.remove("active");
+          }
+        });
+      }
+      document.addEventListener("scroll", scrollInto);
+    </script>
+  </body>
+</html>

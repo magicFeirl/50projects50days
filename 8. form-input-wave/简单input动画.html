@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      * {
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: Arial, Helvetica, sans-serif;
+        height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background-color: #9e9e9e;
+      }
+
+      .form-container {
+        padding: 15px 30px;
+        border-radius: 5px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        display: flex;
+        flex-direction: column;
+        background-color: #F5F5F5;
+      }
+
+      .form-control {
+        position: relative;
+        margin-bottom: 30px;
+      }
+
+      input {
+        padding: 10px 0;
+        font-size: 18px;
+        color: #212121;
+        background-color: transparent;
+        border: none;
+        outline: none;
+        border-bottom: 2px solid #bdbdbd;
+        width: 300px;
+      }
+
+      h1 {
+        text-align: center;
+        margin-bottom: 50px;
+        color: #757575;
+      }
+
+      .form-control label {
+        position: absolute;
+        left: 0;
+        bottom: 10px;
+        pointer-events: none;
+        font-size: 16px;
+        color: #757575;
+        transition: all 0.3s ease-in-out;
+      }
+
+      input:valid + label,
+      input:focus + label {
+        transform: translateY(-30px);
+        color: #757575;
+        font-size: 14px;
+      }
+
+      .btn {
+        outline: none;
+        border: none;
+        cursor: pointer;
+        padding: 15px 0;
+        text-align: center;
+        background-color: #212121;
+        color: #F5F5F5;
+      }
+
+      .btn:active {
+          transform: scale(0.98);
+      }
+
+      .text {
+        margin-top: 30px;
+        font-size: 14px;
+        color: #757575;
+      }
+
+      .text a {
+        text-decoration: none;
+        color: #212121;
+      }
+
+      .text a:hover {
+          color: #607D8B;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="form-container">
+      <h1>Please Login</h1>
+      <div class="form-control">
+        <input type="text" required />
+        <label>Username</label>
+      </div>
+      <div class="form-control">
+        <input type="password" required />
+        <label>Password</label>
+      </div>
+      <button class="btn">Login</button>
+      <p class="text">Don't have a account? <a href="#">Register now!</a></p>
+    </div>
+  </body>
+</html>

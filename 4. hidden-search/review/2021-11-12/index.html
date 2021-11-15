@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      * {
+        box-sizing: border-box;
+      }
+
+      body {
+        margin: 0;
+        height: 100vh;
+        display: grid;
+        place-items: center;
+        background-color: blueviolet;
+      }
+
+      :root {
+        --container-width: 300px;
+        --search-button-width: 50px;
+        --search-input-width: calc(
+          var(--container-width) - var(--search-button-width)
+        );
+      }
+
+      .search-container {
+        height: 50px;
+        position: relative;
+      }
+
+      .search-container.active {
+        width: var(--container-width);
+      }
+
+      .search-container.active #search-btn {
+        transform: translateX(var(--search-input-width));
+      }
+
+      .search-container.active #search {
+        width: var(--search-input-width);
+      }
+
+      .clear-border-outline {
+        border: none;
+        outline: none;
+        border-radius: 0;
+      }
+
+      #search {
+        background-color: white;
+        height: 50px;
+        width: 0;
+        transition: width 0.3s ease;
+        padding: 0.5rem;
+        font-size: 1.5rem;
+      }
+
+      #search-btn {
+        width: var(--search-button-width);
+        height: 50px;
+        display: grid;
+        place-items: center;
+        position: absolute;
+        cursor: pointer;
+        left: 0;
+        transition: transform 0.3s ease;
+        top: 0;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="search-container">
+      <input type="text" id="search" class="clear-border-outline" />
+      <button id="search-btn" class="clear-border-outline">O</button>
+    </div>
+
+    <script>
+      const btn = document.querySelector("#search-btn");
+      const inp = document.querySelector("#search");
+      const container = document.querySelector(".search-container");
+
+      btn.addEventListener("click", () => {
+        container.classList.toggle("active");
+        inp.focus();
+      });
+    </script>
+  </body>
+</html>
