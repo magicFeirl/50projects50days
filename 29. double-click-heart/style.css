@@ -1,0 +1,41 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    height: 100vh;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: cornflowerblue;
+    position: relative;
+    cursor: pointer;
+    overflow: hidden;
+}
+
+h1 {
+    color: white;
+    font-size: 2.5rem;
+    pointer-events: none;
+    user-select: none;
+}
+
+.heart {
+    background-color: red;
+    width: 50px;
+    height: 50px;
+    display: inline-block;
+    animation: heart 0.5s ease-out;
+    transform: translate(-50%, -50%) scale(0);
+    position: absolute;
+    pointer-events: none;
+}
+
+@keyframes heart {
+    100% {
+        /* transform 的参数生效的顺序是从左至右 */
+        transform: translate(-50%, -110%) scale(1);
+        opacity: 0;
+    }
+}

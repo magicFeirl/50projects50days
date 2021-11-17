@@ -1,0 +1,91 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    height: 100vh;
+    margin: 0;
+    font-family: Arial, Helvetica, sans-serif;
+    background-color: #3b3b98;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.container {
+    width: 350px;
+    max-width: 100%;
+    padding: 30px;
+    box-shadow: 0 2px 10px rgba(255, 255, 255, 0.4);
+    background-color: #23235b;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+h2 {
+    color: white;
+}
+
+.password-container,
+.option {
+    display: flex;
+    width: 100%;
+}
+
+.password-container {
+    margin-bottom: 20px;
+    padding: 0.5rem;
+    position: relative;
+    background-color: rgba(0, 0, 0, 0.4);
+}
+
+.password {
+    width: 100%;
+    margin: 0;
+    padding-right: 40px;
+    word-wrap: break-word;
+    color: white;
+}
+
+.copy {
+    position: absolute;
+    right: 0;
+    top: 0;
+    height: 100%;
+    width: 40px;
+    padding: 0;
+}
+
+.options {
+    width: 100%;
+}
+
+.option {
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+}
+
+.option input {
+    outline: none;
+    border: none;
+}
+
+.option-text {
+    color: white;
+}
+
+button {
+    outline: none;
+    border: none;
+    cursor: pointer;
+}
+
+.generation-button {
+    background-color: #3b3b98;
+    padding: 0.5rem 0.8rem;
+    color: white;
+    margin-top: 20px;
+}
