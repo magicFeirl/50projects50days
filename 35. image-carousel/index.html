@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      * {
+        box-sizing: border-box;
+      }
+
+      body {
+        height: 100vh;
+        margin: 0;
+        font-family: Arial, Helvetica, sans-serif;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+
+      .container {
+        position: relative;
+        margin-top: -50px;
+        width: 60vw;
+        height: 50vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+      }
+
+      .carousel-container {
+        width: 100%;
+        height: 100%;
+        overflow: hidden;
+      }
+
+      .carousel {
+        height: 100%;
+        width: 100%;
+        transition: transform 0.3s ease-in-out;
+        display: flex;
+        flex-wrap: nowrap;
+      }
+
+      .carousel div {
+        flex-shrink: 0;
+        height: 100%;
+        width: 100%;
+        background-color: black;
+        color: white;
+        font-size: 6rem;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+
+      .option-buttons {
+        position: absolute;
+        top: 50%;
+        width: 100%;
+        left: 0;
+      }
+
+      .option-buttons button {
+        position: absolute;
+        border: 2px solid steelblue;
+        background-color: transparent;
+        color: darkgoldenrod;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 50px;
+        height: 50px;
+        outline: none;
+        transform: translateY(-50%);
+        font-size: 2rem;
+        font-weight: bold;
+        cursor: pointer;
+        transition: all 0.3s linear;
+      }
+
+      .option-buttons button:hover,
+      .option-buttons button:active {
+        background-color: rgba(255, 255, 255, 0.5);
+      }
+
+      .option-buttons button:active {
+        transform: translateY(-50%) scale(0.98);
+      }
+
+      #prev {
+        left: -25px;
+      }
+
+      #next {
+        right: -25px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div class="carousel-container">
+        <div class="carousel" data-index="0" data-interval="3000">
+          <div>1</div>
+          <div>2</div>
+          <div>3</div>
+          <div>4</div>
+        </div>
+      </div>
+      <div class="option-buttons">
+        <button id="prev">&lt;</button>
+        <button id="next">&gt;</button>
+      </div>
+    </div>
+
+    <script>
+      const prevBtn = document.querySelector("#prev");
+      const nextBtn = document.querySelector("#next");
+      const carouselEle = document.querySelector(".carousel");
+      const carouselItemsLength =
+        carouselEle.querySelectorAll("div").length - 1;
+
+      const slideInterval = +carouselEle.getAttribute("data-interval") || 1500;
+      let currentIdx = +carouselEle.getAttribute("data-index") || 0;
+      let intervalId = setInterval(() => {
+        slide(1);
+      }, slideInterval);
+
+      function slide(offset, clrInterval = false) {
+        currentIdx += offset;
+
+        if (currentIdx < 0) {
+          currentIdx = carouselItemsLength;
+        }
+
+        if (currentIdx > carouselItemsLength) {
+          currentIdx = 0;
+        }
+
+        if (clrInterval) {
+          clearInterval(intervalId);
+          intervalId = setInterval(() => {
+            slide(1);
+          }, slideInterval);
+        }
+
+        carouselEle.style.transform = `translateX(${-currentIdx * 100}%)`;
+      }
+
+      prevBtn.addEventListener("click", () => {
+        slide(-1, true);
+      });
+
+      nextBtn.addEventListener("click", () => {
+        slide(1, true);
+      });
+
+      slide(currentIdx);
+    </script>
+  </body>
+</html>
