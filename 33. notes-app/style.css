@@ -1,0 +1,84 @@
+* {
+    box-sizing: border-box;
+}
+
+html {
+    font-size: 15px;
+}
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    margin: 0;
+    min-height: 100vh;
+    background-color: rgb(123, 218, 243);
+    position: relative;
+    display: flex;
+    justify-content: center;
+}
+
+#add-note {
+    padding: 0.5rem;
+    color: white;
+    background-color: rgb(158, 200, 98);
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    border-radius: 3px;
+    text-transform: uppercase;
+    cursor: pointer;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+}
+
+#add-note i {
+    margin-right: 3px;
+}
+
+#main {
+    padding: 80px 10px;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+}
+
+#main .note {
+    width: 400px;
+}
+
+.note header {
+    display: flex;
+    justify-content: flex-end;
+    padding: 10px;
+    align-items: center;
+    color: white;
+    background-color: rgb(158, 200, 98);
+
+}
+
+.note header button {
+    background-color: transparent;
+    outline: none;
+    border: none;
+    color: white;
+    font-size: 1.2rem;
+    cursor: pointer;
+    transition: color 0.3s linear;
+}
+
+.note header button:hover {
+    color: rgb(74, 126, 2);
+}
+
+.note header button:not(:last-child) {
+    margin-right: 0.5rem;
+}
+
+.note textarea {
+    min-height: 400px;
+    overflow-y: auto;
+    width: 100%;
+    border: none;
+    outline: none;
+    padding: 1.5rem;
+    font-size: 1.5rem;
+    resize: none;
+}
