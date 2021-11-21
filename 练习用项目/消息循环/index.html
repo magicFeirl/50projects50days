@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <button>click me</button>
+    <p>
+      Lorem ipsum dolor sit amet consectetur, adipisicing elit. Magni placeat
+      quibusdam debitis quo, nisi eligendi quasi laboriosam, numquam
+      reprehenderit suscipit non, eaque ducimus hic sequi exercitationem
+      architecto nesciunt amet dicta.
+    </p>
+
+    <script>
+      //   const btn = document.querySelector("button");
+
+      //   btn.addEventListener("click", () => {
+      //     for(let i=0; i<1000000000; i++);
+      //   });
+
+      //   btn.addEventListener("click", () => {
+      //     console.log("event happpend");
+      //   });
+
+      //   console.log('a')
+
+
+      function fa() {
+        for (let i = 0; i < 10000000000; i++);
+      }
+
+      // 这段代码会等到循环结束后输出。表明调用栈和消息队列时两个不同的机制。
+      setTimeout(() => {console.log('timeout')}, 0);
+      fa()
+    </script>
+  </body>
+</html>
