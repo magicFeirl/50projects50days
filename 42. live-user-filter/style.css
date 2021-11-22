@@ -1,0 +1,85 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    height: 100vh;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.container {
+    width: 350px;
+    overflow: hidden;
+    margin-top: -20px;
+    border-radius: 10px;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
+}
+
+p,
+h2 {
+    margin: 0;
+}
+
+.container header {
+    background-color: rgb(62, 87, 219);
+    color: white;
+    padding: 1rem 1.5rem;
+}
+
+header h2 {
+    font-size: 1.5rem;
+}
+
+header p {
+    font-size: 0.8rem;
+    margin: 5px 0 15px 0;
+}
+
+header input {
+    outline: none;
+    border: none;
+    border-radius: 20px;
+    padding: 0.5rem 0.8rem;
+    color: white;
+    font-size: 0.9rem;
+    width: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
+.user-list {
+    list-style: none;
+    margin: 0;
+    overflow-y: auto;
+    max-height: 438px;
+    padding: 15px 40px;
+}
+
+.user {
+    display: flex;
+    align-items: center;
+    padding: 10px 0;
+}
+
+.user.hide {
+    display: none;
+}
+
+.user img {
+    height: 48px;
+    width: 48px;
+    border-radius: 50%;
+    margin-right: 20px;
+}
+
+.user .name {
+    font-weight: 600;
+    margin: -5px 0 5px 0;
+}
+
+.user .location {
+    font-size: 0.8rem;
+}
