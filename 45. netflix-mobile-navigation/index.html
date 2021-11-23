@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      * {
+        box-sizing: border-box;
+      }
+
+      body {
+        height: 100vh;
+        margin: 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-family: Arial, Helvetica, sans-serif;
+        position: relative;
+      }
+
+      .title {
+        color: rgb(219, 32, 44);
+      }
+
+      nav {
+        position: fixed;
+        left: 0;
+        top: 0;
+      }
+
+      .open-menu {
+        position: fixed;
+        top: 20px;
+        left: 15px;
+        cursor: pointer;
+        z-index: -1;
+      }
+
+      .line {
+        height: 2px;
+        width: 20px;
+        background-color: black;
+      }
+
+      .open-menu .line {
+        margin-bottom: 4px;
+      }
+
+      .menu-bg-red,
+      .menu-bg-black,
+      .menu {
+        width: 400px;
+        height: 100%;
+        position: fixed;
+        top: 0;
+        left: 0;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+        transform: translateX(-102%);
+        transition: transform 0.2s linear;
+        padding: 20px 30px;
+        background-color: white;
+        z-index: 1001;
+      }
+
+      .menu-bg-black {
+        background-color: black;
+        width: 440px;
+        z-index: 999;
+      }
+
+      .menu-bg-red {
+        background-color: red;
+        width: 420px;
+        z-index: 1000;
+      }
+
+      .menu header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+
+      .menu .close {
+        color: #8d8d8d;
+        font-weight: 600;
+        cursor: pointer;
+      }
+
+      nav.active .menu,
+      nav.active .menu-bg-black,
+      nav.active .menu-bg-red {
+        transform: translateX(0);
+      }
+
+      nav a {
+        text-decoration: none;
+        color: #1d1d1d;
+      }
+
+      nav .list {
+        list-style: none;
+        padding-left: 0;
+      }
+
+      .list li {
+        margin-bottom: 1.5rem;
+      }
+
+      nav .list.second {
+        padding-left: 1.5rem;
+        margin-top: 1.5rem;
+      }
+    </style>
+  </head>
+  <body>
+    <h2 class="title">Netflix Mobile Navigation</h2>
+    <nav>
+      <div class="menu">
+        <header>
+          <h2 class="title">Netflix</h2>
+          <span class="close">X</span>
+        </header>
+        <ul class="list">
+          <li><a href="#">TEAMS</a></li>
+          <li><a href="#">LOCATIONS</a></li>
+          <li>
+            <a href="#">LIFE AT NETFLIX</a>
+            <ul class="list second">
+              <li><a href="#">NETFLIX CULTURE MEMO</a></li>
+              <li><a href="#">WORK LIEF BALANCE</a></li>
+              <li><a href="#">INCLUSION & DIVERSITY</a></li>
+              <li><a href="#">BLOG</a></li>
+            </ul>
+          </li>
+        </ul>
+        <!-- 本来两个背景侧边栏想放到这里的  可以想想为什么不能放在这里 -->
+      </div>
+
+      <div class="menu-bg-red"></div>
+      <div class="menu-bg-black"></div>
+
+      <div class="open-menu active">
+        <div class="line"></div>
+        <div class="line"></div>
+        <div class="line"></div>
+      </div>
+    </nav>
+
+    <script>
+      const nav = document.querySelector("nav");
+      const openMenu = document.querySelector(".open-menu");
+      const closeMenu = document.querySelector(".close");
+      const menuEle = document.querySelector(".menu");
+      const menuBgRedEle = document.querySelector(".menu-bg-red");
+      const menuBgBlackEle = document.querySelector(".menu-bg-black");
+
+      openMenu.addEventListener("click", () => {
+        nav.classList.add("active");
+        menuEle.style.transitionDelay = "0.4s";
+        menuBgRedEle.style.transitionDelay = "0.2s";
+        menuBgBlackEle.style.transitionDelay = "0s";
+      });
+
+      closeMenu.addEventListener("click", () => {
+        nav.classList.remove("active");
+        menuEle.style.transitionDelay = "0s";
+        menuBgRedEle.style.transitionDelay = "0.2s";
+        menuBgBlackEle.style.transitionDelay = "0.4s";
+      });
+    </script>
+  </body>
+</html>
