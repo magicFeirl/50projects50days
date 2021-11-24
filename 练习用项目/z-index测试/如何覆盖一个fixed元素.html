@@ -1,0 +1,47 @@
+<!--
+用 opacity 开启堆叠上下文，覆盖 fixed 元素
+或者用 relative position
+
+食用方法：
+注释掉 box 的 opacity 看看区别
+-->
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      body {
+        height: 100vh;
+        margin: 0;
+      }
+
+      .container {
+        position: relative;
+        background-color: #4d4d4d;
+      }
+
+      .fixed-box {
+        position: absolute;
+        left: 20px;
+        top: 20px;
+        background-color: blue;
+      }
+
+      .box {
+        width: 100px;
+        height: 100px;
+        background-color: yellow;
+        opacity: 0.99;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div class="fixed-box">i am fixed</div>
+      <div class="box"></div>
+    </div>
+  </body>
+</html>
