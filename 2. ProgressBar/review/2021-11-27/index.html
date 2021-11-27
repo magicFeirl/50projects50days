@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      * {
+        box-sizing: border-box;
+      }
+
+      :root {
+        --progress-duration: 0.2s;
+      }
+
+      body {
+        height: 100vh;
+        margin: 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-family: Arial, Helvetica, sans-serif;
+      }
+
+      .progress-container {
+        width: 480px;
+        position: relative;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+      }
+
+      .progress-bar,
+      .progress::before {
+        content: "";
+        display: block;
+        position: absolute;
+        height: 3px;
+        width: 100%;
+        left: 0;
+        background-color: #9d9d9d;
+        transform: translateY(50%);
+      }
+
+      .progress {
+        display: flex;
+        align-items: center;
+        width: 100%;
+        margin-bottom: 2rem;
+        overflow: hidden;
+        justify-content: space-between;
+      }
+
+      .step {
+        width: 32px;
+        height: 32px;
+        border-radius: 50%;
+        line-height: 32px;
+        background-color: white;
+        border: 2px solid #4d4d4d;
+        color: black;
+        font-size: 1.2rem;
+        text-align: center;
+        position: relative;
+        transition: all var(--progress-duration) ease var(--progress-duration);
+      }
+
+      .step.active {
+        background-color: dodgerblue;
+        color: white;
+      }
+
+      .btns button {
+        padding: 0.3rem 1.5rem;
+        color: white;
+        background-color: dodgerblue;
+        font-size: 1.2rem;
+        border-radius: 5px;
+        outline: none;
+        border: none;
+        cursor: pointer;
+        margin-right: 20px;
+      }
+
+      .btns button:disabled {
+        background-color: #7d7d7d;
+        cursor: default;
+      }
+
+      .progress-bar {
+        transition: width ease;
+        transition-duration: var(--progress-duration);
+        width: 0;
+        background-color: aquamarine;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="progress-container">
+      <div class="progress">
+        <div class="progress-bar"></div>
+        <div class="step active">1</div>
+        <div class="step">2</div>
+        <div class="step">3</div>
+        <div class="step">4</div>
+      </div>
+
+      <div class="btns">
+        <button id="prev" disabled>prev</button>
+        <button id="next">next</button>
+      </div>
+    </div>
+
+    <script>
+      const prev = document.querySelector("#prev");
+      const next = document.querySelector("#next");
+      const steps = document.querySelectorAll(".step");
+      const pb = document.querySelector(".progress-bar");
+
+      let progress = 0;
+
+      function setProgress(s) {
+        const pprogress = progress;
+        progress += s;
+
+        if (progress <= 0) {
+          prev.disabled = true;
+        } else if (progress >= steps.length - 1) {
+          next.disabled = true;
+        } else {
+          prev.disabled = next.disabled = false;
+        }
+
+        if (progress < 0 || progress >= steps.length) {
+          progress = pprogress;
+          return;
+        }
+
+        steps.forEach((step, idx) => {
+          step.classList.remove("active");
+          if (progress >= idx) {
+            step.classList.add("active");
+          }
+        });
+
+        pb.style.width = `calc(${progress * 25}% + ${progress * 32}px)`;
+      }
+
+      next.addEventListener("click", () => {
+        setProgress(1);
+      });
+
+      prev.addEventListener("click", () => {
+        setProgress(-1);
+      });
+    </script>
+  </body>
+</html>
