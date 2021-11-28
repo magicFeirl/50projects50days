@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <button id="jieliu">节流</button>
+    <button id="fangdou">防抖</button>
+  </body>
+
+  <script>
+    const tm = 1000;
+    const fbtn = document.querySelector("#fangdou");
+    const jbtn = document.querySelector("#jieliu");
+
+    let timer = null;
+    let timerj = null;
+
+    function jieliu() {
+      alert("jieliu here!");
+    }
+
+    function fangdou() {
+      alert("hello world");
+    }
+
+    jbtn.addEventListener("click", () => {
+      if (!timerj) {
+        jieliu();
+        timerj = setTimeout(() => {
+          timerj = null;
+        }, tm);
+      }
+    });
+
+    fbtn.addEventListener("click", () => {
+      if (timer) {
+        clearTimeout(timer);
+      }
+
+      timer = setTimeout(fangdou, tm);
+    });
+  </script>
+</html>
