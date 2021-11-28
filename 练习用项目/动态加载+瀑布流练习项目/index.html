@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      * {
+        box-sizing: border-box;
+      }
+
+      body {
+        min-height: 100vh;
+        margin: 0;
+        font-family: Arial, Helvetica, sans-serif;
+      }
+
+      .container {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 20px;
+        align-content: center;
+        justify-content: center;
+        padding: 20px;
+      }
+
+      .container img {
+        max-height: 300px;
+        width: 100%;
+        object-fit: cover;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container"></div>
+
+    <script>
+      let currentPage = 0;
+      const container = document.querySelector(".container");
+
+      async function getImageList(pn, limit = 32) {
+        const api = `https://picsum.photos/v2/list?page=${pn}&limit=${limit}`;
+        return await (await fetch(api)).json();
+      }
+
+      async function loadImage(limit = 32) {
+        for (let i = 0; i < limit; i++) {
+          const img = document.createElement("img");
+          img.src = `https://picsum.photos/300/300`;
+          container.appendChild(img);
+        }
+      }
+
+      loadImage();
+
+      function throttle(fn, delay) {
+        let timer = null;
+        return function () {
+          console.log("throttle");
+          if (!timer) {
+            timer = setTimeout(() => {
+              fn();
+              timer = null;
+            }, delay);
+          }
+        };
+      }
+
+      function debounce(fn, delay) {
+        let timer = null;
+        return function () {
+          if (timer) {
+            clearTimeout(timer);
+          }
+          timer = setTimeout(fn, delay);
+        };
+      }
+
+      // 先防抖后节流  => 监听参考监听
+      window.addEventListener(
+        "scroll",
+        debounce(
+          throttle(() => {
+            const doc = document.querySelector("html");
+            if (doc.scrollTop + doc.clientHeight === doc.scrollHeight) {
+              loadImage();
+            }
+          }, 5000),
+          200
+        )
+      );
+    </script>
+  </body>
+</html>
