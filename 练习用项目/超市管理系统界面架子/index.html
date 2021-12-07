@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+    />
+    <style>
+      * {
+        box-sizing: border-box;
+      }
+
+      :root {
+        --nav-height: 72px;
+        --menu-width: 240px;
+
+        --divider-color: #bdbdbd;
+        --primary-color: #607d8b;
+        --ligth-primary-color: #cfd8dc;
+        --dark-primary-color: #455a64;
+        --text-color: #ffffff;
+        --primary-text-color: #212121;
+      }
+
+      body {
+        height: 100vh;
+        font-family: Arial, Helvetica, sans-serif;
+        display: flex;
+        flex-direction: column;
+        margin: 0;
+      }
+
+      nav {
+        width: 100%;
+        height: var(--nav-height);
+        background-color: var(--dark-primary-color);
+        padding: 0 35px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        position: fixed;
+        top: 0;
+        left: 0;
+        color: var(--text-color);
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.15);
+      }
+
+      nav .logo {
+        font-size: 1.5rem;
+      }
+
+      .container {
+        display: flex;
+        padding-top: var(--nav-height);
+        width: 100%;
+        height: 100%;
+      }
+
+      .avatar-container {
+        font-size: 1rem;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .avatar {
+        border-radius: 50%;
+        height: 40px;
+        width: 40px;
+        margin-right: 0.5rem;
+      }
+
+      .menu-list {
+        width: var(--menu-width);
+        background-color: var(--primary-color);
+        height: 100%;
+        border-right: 1px solid var(--divider-color);
+        padding: 40px 20px;
+        margin: 0;
+        list-style: none;
+      }
+
+      .menu-item {
+        width: 100%;
+        margin-top: 2.5rem;
+        text-align: center;
+        margin-left: -10px;
+        font-size: 1.1rem;
+        padding: 1rem;
+        cursor: pointer;
+        color: var(--primary-text-color);
+      }
+
+      .menu-item.active,
+      .menu-item:hover {
+        background-color: var(--dark-primary-color);
+      }
+
+      .menu-item.active,
+      .menu-item:hover a {
+        color: var(--text-color);
+      }
+
+      .menu-item a {
+        color: inherit;
+        font-size: inherit;
+        text-decoration: none;
+      }
+
+      .menu-item a i {
+        margin-right: 0.3rem;
+      }
+
+      .content {
+        width: calc(100% - var(--menu-width));
+        height: 100%;
+        background-color: var(--ligth-primary-color);
+        padding: 20px;
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <nav>
+        <div class="logo">蚂蚁超市管理系统</div>
+        <div class="avatar-container">
+          <img
+            src="https://picsum.photos/48/48"
+            alt=""
+            class="avatar"
+          />
+          <span>BGG</span>
+        </div>
+      </nav>
+    </header>
+    <div class="container">
+      <ul class="menu-list" data-index="0">
+        <li class="menu-item">
+          <a href="#"><i class="fa fa-briefcase"></i>商品管理</a>
+        </li>
+        <li class="menu-item">
+          <a href="#"><i class="fa fa-user-circle"></i>用户管理</a>
+        </li>
+        <li class="menu-item">
+          <a href="#"><i class="fa fa-reorder"></i>订单管理</a>
+        </li>
+        <li class="menu-item">
+          <a href="#"><i class="fa fa-envelope"></i>通知公告</a>
+        </li>
+      </ul>
+      <main class="content"></main>
+    </div>
+
+    <script>
+      const items = document.querySelectorAll(".menu-item");
+      const activeIndex =
+        +document.querySelector(".menu-list").getAttribute("data-index") || 0;
+
+      const content = document.querySelector("main.content");
+
+      content.innerHTML = `<h2>第 ${activeIndex} 个菜单项被点击</h2>`;
+
+      setActiveItem(activeIndex);
+
+      function clearAllActiveItem() {
+        items.forEach((item) => {
+          item.classList.remove("active");
+        });
+      }
+
+      function setActiveItem(idx) {
+        clearAllActiveItem();
+
+        if (idx < 0 || idx >= items.length) {
+          return;
+        }
+
+        items[idx].classList.add("active");
+      }
+
+      items.forEach((item, idx) => {
+        item.addEventListener("click", (e) => {
+          setActiveItem(idx);
+          content.innerHTML = `<h2>第 ${idx} 个菜单项被点击</h2>`;
+        });
+      });
+    </script>
+  </body>
+</html>

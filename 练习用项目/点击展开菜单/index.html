@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      * {
+        box-sizing: border-box;
+      }
+
+      body {
+        height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-family: Arial, Helvetica, sans-serif;
+        background-color: rgb(233, 236, 239);
+      }
+
+      .menu-container {
+        position: relative;
+      }
+
+      .menu-container > label {
+        position: relative;
+        z-index: 1;
+        background-color: white;
+        padding: 0.5rem 1rem;
+        font-size: 1.2rem;
+        cursor: pointer;
+      }
+
+      #open-menu {
+        visibility: hidden;
+        display: none;
+      }
+
+      #open-menu:checked + .menu-list {
+        display: block;
+      }
+
+      .menu-list {
+        display: none;
+        position: absolute;
+        top: 99%;
+        background-color: white;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 6rem;
+      }
+
+      .menu {
+        padding: 0.5rem 1rem;
+        text-align: center;
+      }
+
+      .menu:hover {
+        background-color: #9d9d9d;
+        cursor: pointer;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="menu-container">
+      <label for="open-menu">open menu</label>
+      <input type="checkbox" id="open-menu" />
+      <div class="menu-list">
+        <div class="menu">圈子</div>
+        <div class="menu">工作</div>
+        <div class="menu">笔记</div>
+      </div>
+    </div>
+  </body>
+</html>

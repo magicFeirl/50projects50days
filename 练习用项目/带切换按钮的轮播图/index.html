@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      * {
+        box-sizing: border-box;
+      }
+
+      body {
+        height: 100vh;
+        margin: 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-family: Arial, Helvetica, sans-serif;
+      }
+
+      .slider-container {
+        width: 60vw;
+        height: 50vh;
+        overflow: hidden;
+        position: relative;
+        display: flex;
+      }
+
+      .slider {
+        width: 100%;
+        height: 100%;
+        transition: transform 0.3s ease;
+        flex-wrap: nowrap;
+        display: flex;
+      }
+
+      .slider .slide-item {
+        width: 100%;
+        height: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        color: white;
+        font-size: 3rem;
+        flex: 1 0 auto;
+        background-color: black;
+      }
+
+      .slider-radiobtn {
+        position: absolute;
+        left: 50%;
+        bottom: 20px;
+        transform: translateX(-50%);
+        display: flex;
+      }
+
+      .slider-radiobtn-item {
+        display: inline-block;
+        margin-right: 20px;
+        padding: 5px 10px;
+        font-size: 0.9rem;
+        color: white;
+        border: 1px solid white;
+        cursor: pointer;
+      }
+
+      .slider-radiobtn-item:hover {
+        background-color: rgba(255, 255, 255, 0.4);
+      }
+    </style>
+  </head>
+  <body>
+    <div class="slider-container">
+      <!-- 提供两个自定义属性 -->
+      <div class="slider" data-index="0" data-interval="2000">
+        <div class="slide-item">1</div>
+        <div class="slide-item">2</div>
+        <div class="slide-item">3</div>
+        <div class="slide-item">4</div>
+        <div class="slide-item">5</div>
+      </div>
+      <div class="slider-radiobtn"></div>
+    </div>
+
+    <script>
+      const slider = document.querySelector(".slider");
+      const slideItems = document.querySelectorAll(".slide-item");
+      const slideItemsLength = slideItems.length;
+      const slideSwitchBtn = document.querySelector(".slider-radiobtn");
+      const sideInterval = +slider.getAttribute("data-interval") || 3000;
+      let currentIdx = +slider.getAttribute("data-index");
+
+      // currentIdx + offset 偏移到指定 slideitem
+      // 这是一个比较通用的函数，可以用于带上一张/下一张切换按钮的slider、也可以用于这个例子中的 slider，同样带切换按钮和带数字切换按钮的 slider 也适用
+      function slide(offset) {
+        currentIdx += offset;
+
+        if (currentIdx < 0) {
+          currentIdx = slideItemsLength - 1;
+        }
+
+        if (currentIdx > slideItemsLength - 1) {
+          currentIdx = 0;
+        }
+
+        slider.style.transform = `translateX(${-currentIdx * 100}%)`;
+      }
+
+      let slideIntervalId = setInterval(() => slide(1), sideInterval);
+
+      // 添加 switch button，且给 switch button 添加点击事件
+      slideItems.forEach((item, idx) => {
+        const btn = document.createElement("span");
+        btn.classList.add("slider-radiobtn-item");
+        btn.innerText = idx + 1;
+
+        btn.addEventListener("click", () => {
+          currentIdx = idx;
+          slide(0);
+          // 清空计时并重新设置计时  这里可以封装成一个函数
+          clearInterval(slideIntervalId);
+          slideIntervalId = setInterval(() => slide(1), sideInterval);
+        });
+
+        slideSwitchBtn.appendChild(btn);
+      });
+    </script>
+  </body>
+</html>
